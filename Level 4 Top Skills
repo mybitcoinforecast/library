@@ -5,14 +5,14 @@ import requests
 import plotly.express
 
 #Top Skill 2. Get API Data
-getYourApiData = requests.get("https://mybitcoinweather.com/api/bitcoin-bull-bear-forecast/YOUR-API-KEY")
+getYourApiData = requests.get("https://mybitcoinforecast.com/api/bitcoin-bull-bear-forecast/YOUR-API-KEY")
 YourApiData = getYourApiData.json()
 
 #Programming Skill - Slicing JSON data
 #Last date API data (most current date)
 YourApiDataCurrent = YourApiData[-1]
 
-#Major 🔑: Simple If Statements & MACD technical analysis points system
+#Top Skill 4. If Statements
 #Weekly Points Logic: If MACD Line > 0 then 30 Points | If MACD Line <= 0 then 0 Points
 if YourApiDataCurrent['weekly_macd_line_zero'] == '> zero':
     weekly_macd_line_zero_points = 30
