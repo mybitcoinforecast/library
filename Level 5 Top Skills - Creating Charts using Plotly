@@ -1,0 +1,82 @@
+#Top Skill 1. Python Coding
+#Import Python Libraries
+!pip install plotly
+import requests
+import plotly.express
+import plotly.graph_objects as go
+
+#Top Skill 2. Get API Data
+getYourApiData = requests.get("https://mybitcoinforecast.com/api/bitcoin-bull-bear-forecast/YOUR-API-KEY")
+YourApiData = getYourApiData.json()
+
+#Programming Skill - Slicing JSON data
+#Most Recent Date API Data
+YourApiDataToday = YourApiData[-1]
+Points = YourApiDataToday['points']
+
+#Programming Skill - Slicing JSON data
+#Most Recent 500 Days Data
+NumberofDays = len(YourApiData)
+YourApiData = YourApiData[NumberofDays - 500:NumberofDays]
+
+#Top Skill 3. Variables (Empty Boxes)
+date = []
+price_close = []
+bullbear_color = []
+weekly_macd_line = []
+weekly_histogram = []
+weekly_signal_line = []
+daily_macd_line = []
+daily_histogram = []
+daily_signal_line = []
+
+#Top Skill 5. Loops (Fill The Empty Boxes)
+#Learn More (https://www.learnpython.org/en/loops)
+for i in YourApiData:
+    idate = i['date']
+    date.append(idate)
+    iprice_close = i['price_close']
+    price_close.append(iprice_close)
+    ibullbear_color=  i['bullbear_color']
+    bullbear_color.append(ibullbear_color)
+    iweekly_macd_line =  i['weekly_macd_line']
+    weekly_macd_line.append(iweekly_macd_line)
+    iweekly_histogram = i['weekly_histogram']
+    weekly_histogram.append(iweekly_histogram)
+    iweekly_signal_line = i['weekly_signal_line']
+    weekly_signal_line.append(iweekly_signal_line)
+    idaily_macd_line=  i['daily_macd_line']
+    daily_macd_line.append(idaily_macd_line)
+    idaily_histogram = i['daily_histogram']
+    daily_histogram.append(idaily_histogram)
+    idaily_signal_line = i['daily_signal_line']
+    daily_signal_line.append(idaily_signal_line)
+
+#Data Science Skill - Create Charts Using Plotly
+#Chart Bitcoin Weather 🌧️☀️
+chartForecast = plotly.express.bar(x=date, y=price_close)
+chartForecast.update_layout(plot_bgcolor='white')
+chartForecast.update_traces(marker_color=bullbear_color)
+
+#Chart Weekly MACD Indicators
+chartWeekly = plotly.express.line(x=date, y=weekly_macd_line)
+chartWeekly.update_traces(line_color="black")
+chartWeekly.add_trace(go.Scatter(x=date, y=weekly_signal_line, fill='tozeroy', line=dict(color="gold"), name="signal" ))
+chartWeekly.add_trace(go.Bar(x=date, y=weekly_histogram, marker_color="royalblue", name="histogram"))
+chartWeekly.update_layout(plot_bgcolor='white')
+
+#Chart Daily MACD Indicators
+chartDaily = plotly.express.line(x=date, y=daily_macd_line)
+chartDaily.update_traces(line_color="black")
+chartDaily.add_trace(go.Scatter(x=date, y=daily_signal_line, fill='tozeroy', line=dict(color="gold"), name="signal"))
+chartDaily.add_trace(go.Bar(x=date, y=daily_histogram, marker_color="royalblue", name="histogram"))
+chartDaily.update_layout(plot_bgcolor='white')
+
+#Major 🔑: Render text, variables and charts 
+print('Bitcoin Bull Bear Forecast')
+print(Points)
+print('Weather Charts')
+chartForecast.show()
+chartWeekly.show()
+chartDaily.show()
+chartDaily.show()
