@@ -12,7 +12,7 @@ YourApiData = getYourApiData.json()
 #Last date API data (most current date)
 YourApiDataCurrent = YourApiData[-1]
 
-#Top Skill 4. If Statements
+#Top Skill 4. If Statements (Weekly Interval)
 #Weekly Points Logic: If MACD Line > 0 then 30 Points | If MACD Line <= 0 then 0 Points
 if YourApiDataCurrent['weekly_macd_line_zero'] == '> zero':
     weekly_macd_line_zero_points = 30
@@ -30,10 +30,10 @@ if YourApiDataCurrent['weekly_histogram_slope'] == 'slope +':
     weekly_histogram_slope_points = 20
 else: weekly_histogram_slope_points = 0
 
-#Easy Math (Add he weekly points)
+#Easy Math (Add The Weekly Points)
 weekly_points = weekly_macd_line_zero_points + weekly_histogram_zero_points + weekly_macd_line_slope_points + weekly_histogram_slope_points
 
-#Simple If Statements (Dily)
+#Top Skill 4. If Statements (Daily Interval)
 #Daily Points Logic: If MACD Line > 0 then 30 Points | If MACD Line <= 0 then 0 Points
 if YourApiDataCurrent['daily_macd_line_zero']  == '> zero':
     daily_macd_line_zero_points = 30
@@ -66,7 +66,7 @@ YourApiData = YourApiData[NumberofDays - 500:NumberofDays]
 #Top Skill 3. Variables (Empty Boxes)
 date = []
 price_close = []
-weather_color = []
+bullbear_color = []
 
 #Top Skill 5. Loops (Fill The Empty Boxes)
 #Learn More (https://www.learnpython.org/en/Loops)
@@ -76,10 +76,10 @@ for i in YourApiData:
     iprice_close = i['price_close']
     price_close.append(iprice_close)
     #Simple If Statement Challenge: Change the colors and run your Bitcoin analysis
-    if i['temperature'] > 50:
-        iweather_color = "gold"
-    else: iweather_color = "lightblue"
-    weather_color.append(iweather_color)
+    if i['points'] > 50:
+        ibullbear_color = "green"
+    else: ibullbear_color = "red"
+    bullbear_color.append(ibullbear_color)
 
 #Top Skill 3. Variables
 xaxis_data = date
