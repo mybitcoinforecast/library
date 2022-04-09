@@ -56,7 +56,7 @@ daily_points = daily_macd_line_zero_points + daily_histogram_zero_points + daily
 
 #Easy Math (Weighted Average of Weekly and Daily Points) 
 #Change the Weightings Yourself and Test Results Visually
-Points = (weekly_points * 0.72) + (daily_points * 0.28)
+Points = round((weekly_points * 0.72) + (daily_points * 0.28), 1)
 
 #Programming Skill - Slicing JSON data
 #Most Recent 500 Days
@@ -93,7 +93,7 @@ yourChart.update_traces(
     marker_color=weather_color
 )
 
-print('Bitcoin Weather')
-print(temperature)
-print('Bitcoin Weather Chart')
+print('Bitcoin Bull Bear Forecast')
+print(Points)
+print('Bull Bear Chart')
 yourChart.show()
