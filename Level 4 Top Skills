@@ -90,7 +90,7 @@ yaxis_data_max = max(yaxis_data)
 yourChart = plotly.express.bar(x=xaxis_data, y=yaxis_data)
 yourChart.update_layout(yaxis_range=[yaxis_data_min,yaxis_data_max], plot_bgcolor='white')
 yourChart.update_traces(
-    marker_color=weather_color
+    marker_color=bullbear_color
 )
 
 print('Bitcoin Bull Bear Forecast')
