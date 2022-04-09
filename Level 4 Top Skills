@@ -8,8 +8,8 @@ import plotly.express
 getYourApiData = requests.get("https://mybitcoinforecast.com/api/bitcoin-bull-bear-forecast/YOUR-API-KEY")
 YourApiData = getYourApiData.json()
 
-#Programming Skill - Slicing JSON data
-#Last date API data (most current date)
+#Programming Skill - Slicing JSON Data
+#Last Date API Data (Most Current Date)
 YourApiDataCurrent = YourApiData[-1]
 
 #Top Skill 4. If Statements (Weekly Interval)
