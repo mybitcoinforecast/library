@@ -4,13 +4,13 @@ import requests
 from IPython.display import Image, display
 
 #Top Skill 2. Get API Data
-getYourApiData = requests.get("https://mybitcoinforecast.com/api/bitcoin-bull-bear-forecast/YOUR-API_KEY")
-YourApiData = getYourApiData.json()
+getMyApiData = requests.get("https://mybitcoinforecast.com/api/bitcoin-bull-bear-forecast/YOUR-API_KEY")
+MyApiData = getMyApiData.json()
 
 #Top Skill 3. Variables
-YourApiDataToday = YourApiData[-1]
-Points = YourApiDataToday['points']
-BTCPrice = YourApiDataToday['price_close']
+MyApiDataToday = MyApiData[-1]
+Points = MyApiDataToday['points']
+BTCPrice = MyApiDataToday['price_close']
 
 #Top Skill 4. If Statements
 if Points > 50:
